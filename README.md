@@ -70,8 +70,6 @@
 
 ---
 
-## 내 기여 (임수영 · 프론트엔드 리드 / 풀스택)
-
 ### Frontend
 - React Native/Expo 앱 전반 구현 (탐지 화면, 길찾기, 내 경로)
 - 탐지 박스 오버레이를 정확하게 맞추는 **letterbox 좌표 보정**(`computeLetterbox` / `mapBoxToScreen`) 구현
