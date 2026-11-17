@@ -21,14 +21,21 @@
 
 ## 주요 기능
 
-| 기능 | 설명 |
-|---|---|
-| 실시간 객체 탐지 | YOLO 기반 탐지 + ByteTrack 추적, 결과를 WebSocket으로 앱에 전달 |
-| 신호등 색상 인식 | 바운딩 박스 하단 1/3 영역을 HSV 기준으로 분석해 적/녹 판별 |
-| 음성·햅틱 안내 | 탐지 결과를 TTS와 진동 패턴으로 변환 |
-| 접근성 길찾기 | 목적지 입력 → 경로 후보(추천/계단 제외) → 턴바이턴 음성 안내 |
-| 내 경로 | 자주 쓰는 경로 저장 및 재사용 |
-| 데모 모드 | letterbox 좌표 보정을 적용한 사전 탐지 결과 재생 |
+| 분류 | 기능 | 설명 | 파트 |
+|------|------|------|------|
+| 탐지 | 실시간 객체 탐지 | 카메라 프레임을 AI 서버로 보내 YOLO 탐지와 ByteTrack 추적 결과를 수신 | Frontend · AI |
+| 탐지 | 근접도·방향 판단 | 객체의 근접도와 좌/정면/우를 판단하고, 위험도가 높은 것을 우선 안내 | AI |
+| 탐지 | 신호등 색상 인식 | HSV 분석으로 적색/녹색 구분 | AI |
+| 안내 | 음성(TTS)·진동 피드백 | 위험 장면, 경로 이탈, 대중교통 상태 전환 시 안내 | Frontend |
+| 안내 | 음성 명령(STT) | 화면별 명령(선택, 반복, 시작, 보행 종료 등)과 확인 응답 | Frontend |
+| 길찾기 | 접근성 우선 도보 길찾기 | 추천 경로와 계단 없는 경로를 비교해 제공 (Tmap) | Frontend · Backend |
+| 길찾기 | 대중교통 길찾기 | 후보 조회, 구간 상태 관리(대기 → 탑승 → 하차), GPS 기반 하차 안내 | Frontend · Backend |
+| 길찾기 | 경로 이탈 감지·재탐색 | 경로에서 벗어나면 음성·진동으로 알리고 재탐색 | Frontend |
+| 길찾기 | 지도 표시 | 카카오맵에 현재 위치와 경로 표시 | Frontend |
+| 접근성 | 횡단보도 접근성 정보·경고 | PostGIS로 주변 횡단보도의 턱, 점자블록, 음향신호기 정보를 집계하고 실시간으로 푸시 | Backend · Frontend |
+| 계정·기록 | 회원가입·로그인 | BCrypt, JWT | Frontend · Backend |
+| 계정·기록 | 보행·길찾기 기록 | 보행 및 길찾기 기록 저장·조회 | Frontend · Backend |
+| 시연 | 데모 모드 | 서버가 데모 영상을 실시간 추론하고 앱이 같은 영상을 재생 | Frontend · AI |
 
 ---
 
@@ -63,10 +70,10 @@
 ## 기술 스택
 
 - **Frontend**: React Native, Expo, TypeScript
-- **Backend**: Spring Boot, Gradle, Spring Security + JWT, PostgreSQL
-- **AI**: Python, FastAPI, YOLO(nano), ByteTrack, OpenCV
-- - **External API**: Tmap(경로 탐색), Kakao(지도·장소 검색), 공공데이터포털 서울특별시 버스 API(정류소 정보 조회, 버스 도착 정보 조회)
-- **Tools**: Git/GitHub, WebSocket
+- **Backend**: Java 17, Spring Boot, Spring Security(JWT), JPA, Flyway, WebSocket(STOMP), PostgreSQL(PostGIS)
+- **AI**: Python, Ultralytics YOLO, ByteTrack, OpenCV
+- **External API**: Tmap(보행자·대중교통 경로), Kakao(지도, 장소 검색), 서울시 버스 정보 API(공공데이터포털)
+- **Tools**: Git/GitHub, Gradle, Expo/EAS
 
 ---
 
