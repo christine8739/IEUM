@@ -52,9 +52,9 @@
 
 | 파트 | 레포 | 내용 |
 |---|---|---|
-| Frontend | [frontend-ieum](https://github.com/christine8739/frontend-ieum) | React Native(Expo) 앱, 데모 모드, 길찾기·내 경로 화면 |
-| Backend | [backend-ieum](https://github.com/christine8739/backend-ieum) | Spring Boot, JWT 인증, 경로 후보 조회·저장 API |
-| AI | [AI-ieum](https://github.com/christine8739/AI-ieum) | YOLO 탐지, ByteTrack 추적, 신호등 인식 |
+| Frontend | [frontend-ieum](https://github.com/corner-IEUM/frontend-ieum) | React Native(Expo) 앱, 데모 모드, 길찾기·내 경로 화면 |
+| Backend | [backend-ieum](https://github.com/corner-IEUM/backend-ieum) | Spring Boot, JWT 인증, 경로 후보 조회·저장 API |
+| AI | [AI-ieum](https://github.com/corner-IEUM/AI-ieum) | YOLO 탐지, ByteTrack 추적, 신호등 인식 |
 
 > 원본 조직 레포: [corner-IEUM](https://github.com/corner-IEUM)
 
@@ -65,7 +65,7 @@
 - **Frontend**: React Native, Expo, TypeScript
 - **Backend**: Spring Boot, Gradle, Spring Security + JWT, PostgreSQL
 - **AI**: Python, FastAPI, YOLO(nano), ByteTrack, OpenCV
-- **External API**: Tmap (경로 탐색)
+- - **External API**: Tmap(경로 탐색), Kakao(지도·장소 검색), 공공데이터포털 서울특별시 버스 API(정류소 정보 조회, 버스 도착 정보 조회)
 - **Tools**: Git/GitHub, WebSocket
 
 ---
